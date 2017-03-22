@@ -1,31 +1,15 @@
 <template>
   <div id="app">
-    <loading v-model="isLoading"></loading>
-    <transition :name="transitionName">
+    <transition name="router-fade">
       <router-view class="router-view"></router-view>
     </transition>
   </div>
 </template>
 
 <script>
-import { Loading } from 'vux'
 export default {
   name: 'app',
-  data () {
-    return {
-      transitionName: 'vux-pop-in'
-    }
-  },
   components: {
-    Loading
-  },
-  watch: {
-    '$route' (to, from) {
-      console.log(to, from)
-      const toDepth = to.path.split('/').length
-      const fromDepth = from.path.split('/').length
-      this.transitionName = toDepth < fromDepth ? 'vux-pop-out' : 'vux-pop-in'
-    }
   }
 }
 </script>
@@ -33,4 +17,11 @@ export default {
 <style lang="less">
 @import '../static/css/reset.less';
 @import './style/common.less';
+.router-fade-enter-active, .router-fade-leave-active {
+  transition: opacity .3s;
+}
+.router-fade-enter, .router-fade-leave-active {
+  opacity: 0;
+}
+
 </style>
