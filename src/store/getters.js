@@ -1,3 +1,5 @@
-/**
- * Created by weat on 2017/3/22.
- */
+export default {
+  todos: state => {
+    return state.todos.filter(todo => todo.done)
+  }
+}

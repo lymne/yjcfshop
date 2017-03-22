@@ -4,7 +4,6 @@ const home = r => require.ensure([], () => r(require('../page/home/home')), 'hom
 
 export default [{
   path: '/',
-  name: 'App',
   component: App,
   children: [
     {
